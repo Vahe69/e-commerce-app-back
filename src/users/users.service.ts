@@ -36,4 +36,17 @@ export class UsersService {
             return Number(user.id) === Number(id);
         })
     }
+    private nextId = 4;
+    createUser(
+        userData: Omit<Users, 'id'>,
+    ) : Users {
+        const newUser = {
+            id: this.nextId,
+            ...userData,
+        };
+        this.nextId++;
+        this.users.push(newUser);
+
+        return newUser;
+    }
 }
