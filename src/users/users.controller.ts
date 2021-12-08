@@ -26,7 +26,6 @@ export class UsersController {
     }
 
     @Post("add")
-    @UseGuards(JwtAuthGuard)
     async createUser(
         @Body() newUser : CreateUserDto
     ) : Promise<Users> {

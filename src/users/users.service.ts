@@ -42,7 +42,9 @@ export class UsersService {
     ]
 
     getUsers(): Users[] {
-        const users = this.users; // On récupére la liste des users
+        const users = [
+            ...this.users
+        ]; // On récupére la liste des users
         for (const u of users){
             delete u.motdepasse;
             delete u.salt;
@@ -55,10 +57,13 @@ export class UsersService {
         const user = this.users.find((user : Users) => {
             return Number(user.id) === Number(actualUser.id); 
         });
-        delete user.salt;
-        delete user.motdepasse;
+        const result = {
+            ...user
+        }
+        delete result.motdepasse;
+        delete result.salt;
         // On supprime le mot de passe et le salt avant de l'envoyer.
-        return user;
+        return result;
     }
 
     private nextId = 4;
@@ -66,51 +71,58 @@ export class UsersService {
     async createUser(
         userData: CreateUserDto,
     ) : Promise<Users> {
-        const {email, password, nom, prenom} = userData;
+        const {email, password, verifiedPassword, nom, prenom} = userData;
         for(const u of this.users){
             if(u.mail === email){
                 throw new ConflictException(`Le client a déjà été créer.`);
             }
         }
-        const newUser = new Users();
-        newUser.id = this.nextId;
+        if(password === verifiedPassword){
+            const newUser = new Users();
+            newUser.id = this.nextId;
 
-        newUser.mail = email;
-        newUser.nom = nom;
-        newUser.prenom = prenom;
-        newUser.salt = await bcrypt.genSalt();
-        newUser.motdepasse = await bcrypt.hash(password, newUser.salt);
-        
-        this.nextId++;
-        this.users.push(newUser);
+            newUser.mail = email;
+            newUser.nom = nom;
+            newUser.prenom = prenom;
+            newUser.salt = await bcrypt.genSalt();
+            newUser.motdepasse = await bcrypt.hash(password, newUser.salt);
+            
+            this.nextId++;
+            this.users.push(newUser);
 
-        delete newUser.motdepasse;
-        delete newUser.salt;
-        return newUser;
+            const result = {
+                ...newUser
+            }
+            delete result.motdepasse;
+            delete result.salt;
+            return result;
+        }else{
+            throw new ConflictException(`Les deux mot des passe ne sont pas identiques.`)
+        }
     }
 
     async loginUser(loginUser: ConnectUserDto){
         const {email, password} = loginUser;
 
-        for(const u of this.users){
-            if(u.mail === email){
-                const hashedPassword = await bcrypt.hash(password, u.salt);
-                if(hashedPassword === u.motdepasse){
-                    const payload = {
-                        email: u.mail,
-                        nom: u.nom,
-                        prenom: u.prenom
-                    }
-                    const jwt = await this.jwtService.sign(payload);
-                    return {
-                        "access_token": jwt
-                    };
-                }else{
-                    throw new NotFoundException(`Votre email ou votre mot de passe est erronée.`);
-                }
-            }else{
-                throw new NotFoundException(`Votre email ou votre mot de passe est erronée.`);
+        const user = await this.users.find((user : Users) => {
+            return user.mail === email;
+        })
+        if(!user){
+            throw new NotFoundException(`Votre email ou votre mot de passe est erronée.`);
+        }
+        const hashedPassword = await bcrypt.hash(password, user.salt);
+        if(hashedPassword === user.motdepasse){
+            const payload = {
+                mail: user.mail,
+                nom: user.nom,
+                prenom: user.prenom
             }
+            const jwt = await this.jwtService.sign(payload);
+            return {
+                "access_token": jwt
+            };
+        }else{
+            throw new NotFoundException(`Votre email ou votre mot de passe est erronée.`);
         }
     }
 }

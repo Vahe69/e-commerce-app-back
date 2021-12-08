@@ -10,6 +10,10 @@ export class CreateUserDto {
     password: string;
 
     @IsString()
+    @IsNotEmpty()
+    verifiedPassword: string;
+
+    @IsString()
     @IsOptional()
     prenom: string;
 
