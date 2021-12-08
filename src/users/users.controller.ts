@@ -4,6 +4,7 @@ import {Users} from "./users.entity";
 import { CreateUserDto } from './dto/createUser.dto';
 import { ConnectUserDto } from './dto/connectUser.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { User } from 'src/decorators/user.decorator';
 
 @Controller('users')
 export class UsersController {
@@ -16,10 +17,11 @@ export class UsersController {
         return this.usersService.getUsers();
     }
 
-    @Get("/:id")
-    @UseGuards(JwtAuthGuard)
-    getUsersById(@Param('id') userId : number) : Users {
-        return this.usersService.getUsersById(userId);
+    @Get("auth")
+    getUser(
+        @User() user
+    ) : Users {
+        return this.usersService.getUser(user);
     }
 
     @Post("add")

@@ -48,9 +48,9 @@ export class UsersService {
         return users; // On retourne la liste des users une fois modifier.
     }
 
-    getUsersById(id : number) : Users {
-        const user = this.users.find((user: Users) => {
-            return Number(user.id) === Number(id); // On récupère le user d'id ${id}.
+    getUser(actualUser) : Users {
+        const user = this.users.find((user : Users) => {
+            return Number(user.id) === Number(actualUser.id); 
         });
         delete user.salt;
         delete user.motdepasse;
