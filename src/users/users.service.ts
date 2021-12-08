@@ -9,21 +9,24 @@ export class UsersService {
             prenom: "Antho",
             nom: "Odin",
             mail: "antho.od@gmail.com",
-            motdepasse: "bonjour"
+            motdepasse: "bonjour",
+            commande: [""]
         },
         {
             id:2,
             prenom:"Raja",
             nom:"Truc",
             mail: "rajtruc@tutu.com",
-            motdepasse: "azer"
+            motdepasse: "azer",
+            commande: [""]
         },
         {
             id:3,
             prenom: "Alex",
             nom:"Rust",
             mail: "alexrust@gmail.com",
-            motdepasse: "trident"
+            motdepasse: "trident",
+            commande: [""]
         }
     ]
 

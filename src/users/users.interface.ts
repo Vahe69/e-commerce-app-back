@@ -8,4 +8,5 @@ export interface Users {
     nom: string;
     mail:string;
     motdepasse:string;
+    commande: string[];
 }
