@@ -5,4 +5,5 @@ export class Users {
     mail:string;
     motdepasse:string;
     salt: string;
+    commande: string[];
 }

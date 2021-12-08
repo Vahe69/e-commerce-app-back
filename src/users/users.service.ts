@@ -17,39 +17,27 @@ export class UsersService {
             prenom: "Antho",
             nom: "Odin",
             mail: "antho.od@gmail.com",
-<<<<<<< HEAD
-            motdepasse: "bonjour",
-            commande: [""]
-=======
             motdepasse: "$2b$10$Qf0hRy5zgD9qr6.B3lNWk.34Sb7.pJUvv/oHd09KFlqnvU8wPki2m", //bonjour
-            salt: "$2b$10$Qf0hRy5zgD9qr6.B3lNWk."
->>>>>>> master
+            salt: "$2b$10$Qf0hRy5zgD9qr6.B3lNWk.",
+            commande: [""]
         },
         {
             id:2,
             prenom:"Raja",
             nom:"Truc",
             mail: "rajtruc@tutu.com",
-<<<<<<< HEAD
-            motdepasse: "azer",
-            commande: [""]
-=======
             motdepasse: "$2b$10$phmFl7eiJxubrRRRCK1d3.1geRe7QS8FvL97ydyoRzChcVXad72cS", //azer
-            salt: "$2b$10$phmFl7eiJxubrRRRCK1d3."
->>>>>>> master
+            salt: "$2b$10$phmFl7eiJxubrRRRCK1d3.",
+            commande: [""]
         },
         {
             id:3,
             prenom: "Alex",
             nom:"Rust",
             mail: "alexrust@gmail.com",
-<<<<<<< HEAD
-            motdepasse: "trident",
-            commande: [""]
-=======
             motdepasse: "$2b$10$Hm.aFafUn3yO/Jqvxs0ES.k8F57CYUAYbqVIdfqkiPrX0A4QcD5FK", //trident
-            salt: "$2b$10$Hm.aFafUn3yO/Jqvxs0ES."
->>>>>>> master
+            salt: "$2b$10$Hm.aFafUn3yO/Jqvxs0ES.",
+            commande: [""]
         }
     ]
 

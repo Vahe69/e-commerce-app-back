@@ -22,7 +22,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   // Cette fonction va permettre de vérifier si le user exist en récupérant le payload dans le token envoyer au moment de la connexion.
   async validate(payload: PayloadInterface) {
     const users = this.userService.users;
-    const user = await users.find((user: Users) => { 
+    const user = await users.find((user: Users) => {
       return user.mail === payload.mail 
     });
     if(user){

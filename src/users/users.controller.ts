@@ -18,6 +18,7 @@ export class UsersController {
     }
 
     @Get("auth")
+    @UseGuards(JwtAuthGuard)
     getUser(
         @User() user
     ) : Users {
