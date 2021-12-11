@@ -17,57 +17,66 @@
 <a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
   <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
     <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Projet de création d'un site e-commerce
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Nous sommes sur le répertoire back-end. 
+Merci de commencer à faire cette installation avant d'installer le front-end via la commande :
+
+```git clone https://github.com/Vahe69/e-commerce-app-back.git```
 
 ## Installation
+
+Une fois la commande terminer, déplacez-vous dans le répertoire du projet. Puis exécutez la commande suivante : 
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Pour lancer l'application
+
+Pour lancer le projet après l'installation de celui-ci, il faut lancer la commande suivante :
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+$ npm start
 ```
-
-## Test
-
+ou
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+$ nest start
 ```
+Le projet va se lancer sur l'url suivante : ```http://localhost:3030```. Vous pouvez tester l'application via l'application Postman selon les différentes routes de l'application expliqué dans la partie ci-dessous. Ou alors tester l'application avec le front en suivant l'installation et le lancement de celle-ci sur ```https://github.com/Vahe69/e_commerce-app```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Explication de l'application
 
-## Stay in touch
+L'application Nest comporte plusieurs routes selon les méthodes HTTP : 
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- /, GET
 
-## License
+Permet juste de tester l'application.
 
-Nest is [MIT licensed](LICENSE).
+- /users, GET
+
+Permet de récupérer tous les utilisateurs.
+
+- /users/auth, GET
+
+Permet de récupérer l'authentification de l'utilisateur.
+
+- /users/add, POST
+
+Permet d'ajouter un nouveau utilisateur.
+
+- /users/auth, POST
+
+Permet de s'authentifier sur la page de connexion.
+
+- /products, GET
+
+Permet de récupérer tous les produits.
+
+
+Fait par : - THOBOIS Antonin. - ODIN Anthony.
