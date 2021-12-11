@@ -30,7 +30,7 @@ Merci de commencer à faire cette installation avant d'installer le front-end vi
 
 ## Installation
 
-Une fois la commande terminer, déplacez-vous dans le répertoire du projet. Puis exécutez la commande suivante : 
+Une fois la commande terminé, déplacez-vous dans le répertoire du projet. Puis exécutez la commande suivante : 
 
 ```bash
 $ npm install
@@ -47,7 +47,7 @@ ou
 ```bash
 $ nest start
 ```
-Le projet va se lancer sur l'url suivante : ```http://localhost:3030```. Vous pouvez tester l'application via l'application Postman selon les différentes routes de l'application expliqué dans la partie ci-dessous. Ou alors tester l'application avec le front en suivant l'installation et le lancement de celle-ci sur ```https://github.com/Vahe69/e_commerce-app```
+Le projet va se lancer sur l'url suivante : [http://localhost:3030](http://localhost:3030) Vous pouvez tester l'application via l'application Postman selon les différentes routes de l'application expliquée dans la partie ci-dessous. Ou alors tester l'application avec le front en suivant l'installation et le lancement de celle-ci sur [https://github.com/Vahe69/e_commerce-app](https://github.com/Vahe69/e_commerce-app)
 
 
 ## Explication de l'application
