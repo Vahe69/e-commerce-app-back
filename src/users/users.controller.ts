@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, Post, UseGuards} from '@nestjs/common';
+import {Body, Controller, Get, Param, ParseIntPipe, Post, UseGuards} from '@nestjs/common';
 import {UsersService} from "./users.service";
 import {Users} from "./users.entity";
 import { CreateUserDto } from './dto/createUser.dto';
@@ -36,8 +36,26 @@ export class UsersController {
     async loginUser(
         @Body() loginUser: ConnectUserDto
     ){
-        return this.usersService.loginUser(loginUser)
+        return this.usersService.loginUser(loginUser);
     }
 
+    @Get("commande")
+    @UseGuards(JwtAuthGuard)
+    getCommande(
+        @User() user
+    ){
+        return this.usersService.getCommande(user);
+    }
+
+    @Post("commande/:id")
+    @UseGuards(JwtAuthGuard)
+    addCommande(
+        @Param('id', ParseIntPipe) commandeId: number,
+        @User() user
+    ){
+        return this.usersService.addCommande(user, commandeId);
+    }
+
+    
 
 }

@@ -1,3 +1,5 @@
+import { Produit } from "src/produits/produits.interface";
+
 export class Users {
     id:number;
     prenom: string;
@@ -5,5 +7,5 @@ export class Users {
     mail:string;
     motdepasse:string;
     salt: string;
-    commande: string[];
+    commande: Produit[];
 }

@@ -4,7 +4,6 @@ import { CreateUserDto } from './dto/createUser.dto';
 import { Users } from "./users.entity";
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import {Produit} from "../produits/produits.interface";
 import {ProduitsService} from "../produits/produits.service";
 
 @Injectable()
@@ -22,7 +21,7 @@ export class UsersService {
             mail: "antho.od@gmail.com",
             motdepasse: "$2b$10$Qf0hRy5zgD9qr6.B3lNWk.34Sb7.pJUvv/oHd09KFlqnvU8wPki2m", //bonjour
             salt: "$2b$10$Qf0hRy5zgD9qr6.B3lNWk.",
-            commande: [""]
+            commande: []
         },
         {
             id:2,
@@ -31,7 +30,7 @@ export class UsersService {
             mail: "rajtruc@tutu.com",
             motdepasse: "$2b$10$phmFl7eiJxubrRRRCK1d3.1geRe7QS8FvL97ydyoRzChcVXad72cS", //azer
             salt: "$2b$10$phmFl7eiJxubrRRRCK1d3.",
-            commande: [""]
+            commande: []
         },
         {
             id:3,
@@ -40,7 +39,7 @@ export class UsersService {
             mail: "alexrust@gmail.com",
             motdepasse: "$2b$10$Hm.aFafUn3yO/Jqvxs0ES.k8F57CYUAYbqVIdfqkiPrX0A4QcD5FK", //trident
             salt: "$2b$10$Hm.aFafUn3yO/Jqvxs0ES.",
-            commande: [""]
+            commande: []
         }
     ]
 
@@ -129,10 +128,18 @@ export class UsersService {
         }
     }
 
-    private commande = [];
-
-    addCommande(id : number) {
+    addCommande(user, id : number) {
+        const userCommande = this.users.find((userCommande : Users) => {
+            return Number(userCommande.id) === Number(user.id); 
+        });
         const produit = this.produitService.getProduitById(id);
-        return this.commande.push(produit);
+        return userCommande.commande.push(produit);
+    }
+
+    getCommande(user){
+        const userCommande = this.users.find((userCommande : Users) => {
+            return Number(userCommande.id) === Number(user.id); 
+        });
+        return userCommande.commande;
     }
 }
