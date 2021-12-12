@@ -4,11 +4,14 @@ import { CreateUserDto } from './dto/createUser.dto';
 import { Users } from "./users.entity";
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import {Produit} from "../produits/produits.interface";
+import {ProduitsService} from "../produits/produits.service";
 
 @Injectable()
 export class UsersService {
     constructor(
-        private jwtService: JwtService
+        private jwtService: JwtService,
+        private produitService : ProduitsService
     ){}
 
     public users : Users[] = [
@@ -124,5 +127,12 @@ export class UsersService {
         }else{
             throw new NotFoundException(`Votre email ou votre mot de passe est erronée.`);
         }
+    }
+
+    private commande = [];
+
+    addCommande(id : number) {
+        const produit = this.produitService.getProduitById(id);
+        return this.commande.push(produit);
     }
 }
