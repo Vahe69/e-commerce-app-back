@@ -78,5 +78,12 @@ Permet de s'authentifier sur la page de connexion.
 
 Permet de récupérer tous les produits.
 
+- /users/commande, GET
+
+Permet de récupérer la commande de l'utilisateur.
+
+- /users/commande/:id, POST
+
+Permet d'ajouter un produit dans la commande de l'utilisateur.
 
 Fait par : - THOBOIS Antonin. - ODIN Anthony.
